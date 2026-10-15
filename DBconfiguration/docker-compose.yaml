@@ -1,0 +1,17 @@
+services:
+  postgres:
+    image: postgres:15-alpine
+    container_name: ContDBpractMod3
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: Admin
+      POSTGRES_PASSWORD: p4ssw0rdDB
+      POSTGRES_DB: credenciales
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+
+volumes:
+  postgres_data:
+    driver: local
